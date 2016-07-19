@@ -13,7 +13,7 @@ let mongoose = require('mongoose');
 
 require('dotenv').config();
 
-let mongoUrl = process.env.MONGODB_URI || 'mongodb://localhost/Myapp';
+let mongoUrl = process.env.MONGODB_URI || 'mongodb://localhost/photoUpload';
 
 mongoose.connect(mongoUrl, err => {
   console.log(err || `MongoDB connected to ${mongoUrl}`);

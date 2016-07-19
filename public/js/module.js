@@ -27,6 +27,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
       controller: 'loginRegisterCtrl'
     })
 
+    .state('photo', {
+      url: '/photo',
+      templateUrl: '/html/photo.html',
+      controller: 'photoCtrl'
+    })
+
 
     .state('profile', {
       url: '/profile',
@@ -42,7 +48,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
     .state('upload', {
       url: '/upload',
       templateUrl: '/html/upload.html',
-      controller: 'uploadCtrl'
+      controller: 'uploadCtrl',
+      resolve: {
+        CurrentUser: function(User) {
+          return User.getProfile();
+        }
+      }
     })
 
 

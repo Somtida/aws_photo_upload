@@ -16,7 +16,7 @@
   <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
   <script src="/bower_components/sweetalert/dist/sweetalert.min.js"></script>
   <script src="/bower_components/ngSweetAlert/SweetAlert.min.js"></script>
-  
+
   <script src="/bower_components/ng-file-upload/ng-file-upload-shim.min.js"></script>
   <script src="/bower_components/ng-file-upload/ng-file-upload.min.js"></script>
   <script src="/js/module.js"></script>
@@ -35,6 +35,8 @@
 
           <li><a class="active" ui-sref='home'>HOME</a></li>
           <li><a ng-show="currentUser" class="btn" ui-sref='profile'>MY PROFILE</a></li>
+          <!-- <li><a ng-show="currentUser" class="btn" ui-sref='upload'>MY PHOTO</a></li> -->
+          <li><a ng-show="currentUser" class="btn" ui-sref='photo'>MY PHOTO</a></li>
           <li><a ng-hide="currentUser" class="btn" ui-sref='login'>Login</a></li>
           <li><a ng-hide="currentUser" class="btn" ui-sref='register'>Register</a></li>
           <li><a ng-show="currentUser" class="btn" ui-sref='register' ng-click="logout()">LogOut</a></li>

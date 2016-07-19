@@ -38,25 +38,4 @@ app.service('User', function($http, $rootScope, $cookies, $state, $q, TOKENNAME)
     $state.go('home');
   };
 
-  // this.addStock = (id, symbol) => {
-  //   return $http.put(`/api/users/addStock/${id}`, {symbol: symbol});
-  // }
-  //
-  // this.deleteAStock = (id, symbol) => {
-  //   return $http.put(`/api/users/deleteAStock/${id}`, {symbol: symbol});
-  // }
-
 });
-
-// app.service('Stock', function($http) {
-//
-//   this.getStock = (symbol) => {
-//     console.log("service symbol: ", symbol);
-//     return $http.post('/api/stocks', {symbol: symbol});
-//   }
-//   this.lookupStock = (symbol) => {
-//     console.log("service symbol: ", symbol);
-//     return $http.post('/api/stocks/lookup', {symbol: symbol});
-//   }
-//
-// });
