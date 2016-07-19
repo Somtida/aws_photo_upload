@@ -39,3 +39,12 @@ app.service('User', function($http, $rootScope, $cookies, $state, $q, TOKENNAME)
   };
 
 });
+
+app.service('Photo', function($http){
+  this.getAll = (id) => {
+    return $http.get(`/api/files/${id}`);
+  }
+  this.deletePhoto = (id) => {
+    return $http.delete(`/api/files/${id}`)
+  }
+})

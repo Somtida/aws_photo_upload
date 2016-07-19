@@ -19,12 +19,32 @@ app.controller('profileCtrl', function(CurrentUser, $scope) {
   $scope.user = CurrentUser;
 })
 
-app.controller('photoCtrl', function() {
+app.controller('photoCtrl', function($scope, Photo, CurrentUser) {
   console.log('photoCtrl!');
+  console.log("CurrentUser.data._id: ", CurrentUser.data._id);
+  Photo.getAll(CurrentUser.data._id)
+  .then(res => {
+    console.log("res.data: ", res.data);
+    $scope.photos = res.data;
+  })
+  .catch(err => {
+    console.log("err: ", err);
+  })
 
+  $scope.deletePhoto = (id, index) => {
+    console.log("id: ",id);
+    Photo.deletePhoto(id)
+    .then(res => {
+      console.log("res: ", res);
+      $scope.photos.splice(index,1)
+    })
+    .catch(err => {
+      console.log("err: ", err);
+    })
+  }
 })
 
-app.controller('uploadCtrl', function($scope, Upload, CurrentUser) {
+app.controller('uploadCtrl', function($scope, $state, Upload, CurrentUser) {
   console.log('uploadCtrl!');
   console.log("CurrentUser: ", CurrentUser);
   //let user = JSON.parse(CurrentUser);
@@ -40,6 +60,7 @@ app.controller('uploadCtrl', function($scope, Upload, CurrentUser) {
     .then(res => {
       console.log("res: ", res);
       $scope.savedImage = res.data;
+      $state.go('photo');
     })
     .catch(err => {
       console.log("err: ", err);

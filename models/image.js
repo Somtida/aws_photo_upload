@@ -59,9 +59,23 @@ imageSchema.statics.upload = function(file, user, cb){
 
 }
 
-// imageSchema.methods.delete = function(cb){
-//   // this.key
-// }
+imageSchema.statics.deletePhoto = function(id, cb){
+  console.log("id in method: ", id);
+  this.findByIdAndRemove(id, (err, data) => {
+    console.log("err: ", err);
+    console.log("data: ", data);
+    var params = {
+      Bucket: 'SomtidaNewBucket',
+      Delete: {
+        Objects: [{Key: data.key}]
+      }
+    };
+    s3.deleteObjects(params, function(err, data) {
+      cb(err)
+    });
+  // this.key
+});
+}
 
 
 var Image = mongoose.model('Image', imageSchema);

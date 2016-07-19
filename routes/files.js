@@ -33,8 +33,18 @@ router.post('/', upload.single('file'), (req, res) => {
   })
 });
 
-router.get('/', (req, res) => {
-  Image.find({}, (err, images)=>{
+router.delete('/:id', (req, res) => {
+  console.log("req.params.id: ", req.params.id);
+  console.log("Image.deletePhoto: ", Image.deletePhoto);
+  Image.deletePhoto(req.params.id, (err) => {
+    console.log("delete image");
+    if(err) return res.status(400).send(err);
+    res.send();
+  });
+})
+
+router.get('/:userId', (req, res) => {
+  Image.find({user: req.params.userId}, (err, images)=>{
     res.status(err ? 400 : 200).send(err || images);
   });
 })

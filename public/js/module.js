@@ -30,7 +30,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
     .state('photo', {
       url: '/photo',
       templateUrl: '/html/photo.html',
-      controller: 'photoCtrl'
+      controller: 'photoCtrl',
+      resolve: {
+        CurrentUser: function(User) {
+          return User.getProfile();
+        }
+      }
     })
 
 

@@ -1,1 +1,13 @@
 <h1>photo</h1>
+
+<a ui-sref="upload" class="button btn btn-info text-left">Upload New Photo</a>
+<p></p>
+<!-- <pre>{{photos | json}}</pre> -->
+<div class="row">
+  <div class="col-xs-6 col-md-3" ng-repeat="photo in photos track by $index">
+    <a class="thumbnail">
+      <img src="{{photo.url}}" alt="">
+      <button class="btn btn-danger" ng-click="deletePhoto(photo._id, $index)">X</button>
+    </a>
+  </div>
+</div>
